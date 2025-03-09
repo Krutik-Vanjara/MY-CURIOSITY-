@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krutik Vanjara | Embedded Systems Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #023139;
+      --secondary: #66c2a5;
+      --text: #023139;
+      --text-secondary: #4b6571;
+      --bg: #f6f7f1;
+      --card-bg: #ffffff;
+      --highlight: #66c2a5;
+      --accent: #d6e8e0;
+      --border: #e1e5dd;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 60px;
+      text-align: center;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .name {
+      font-family: 'Space Mono', monospace;
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+    
+    .title {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 30px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .contact-item a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    
+    .contact-item a:hover {
+      color: var(--highlight);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 40px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      padding: 5px 0;
+      position: relative;
+      transition: color 0.3s;
+    }
+    
+    nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--highlight);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover {
+      color: var(--highlight);
+    }
+    
+    nav a:hover:after {
+      width: 100%;
+    }
+    
+    section {
+      margin-bottom: 60px;
+      padding-top: 40px; /* Added padding to account for navigation offset */
+      scroll-margin-top: 20px; /* Ensures the section starts at the right place when scrolled to */
+    }
+    
+    .section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 3px;
+      background-color: var(--highlight);
+      bottom: -5px;
+      left: 0;
+    }
+    
+    .summary {
+      margin-bottom: 40px;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 800px;
+      line-height: 1.8;
+    }
+    
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .skill-category {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-category h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .skill-category h3:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 2px;
+      background-color: var(--highlight);
+      bottom: -5px;
+      left: 0;
+    }
+    
+    .skill-list {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .project {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--highlight);
+      transition: transform 0.3s;
+    }
+    
+    .project:hover {
+      transform: translateY(-5px);
+    }
+    
+    .project h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      font-family: 'Space Mono', monospace;
+    }
+    
+    .project p {
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .project p:before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--highlight);
+    }
+    
+    .education {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .education-item {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .education-item:before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 100%;
+      background-color: var(--highlight);
+      left: 0;
+      top: 0;
+    }
+    
+    .education-item h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      font-family: 'Space Mono', monospace;
+    }
+    
+    .education-item .institution {
+      color: var(--highlight);
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .education-item .date {
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 15px;
+      display: inline-block;
+      background-color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    
+    .education-item p {
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+    
+    .additional {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .additional-item {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    
+    .additional-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .additional-item h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .additional-item h3:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 2px;
+      background-color: var(--highlight);
+      bottom: -5px;
+      left: 0;
+    }
+    
+    .additional-item p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cta-button:hover {
+      background-color: var(--highlight);
+      transform: translateY(-3px);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 60px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+    
+    @media (max-width: 768px) {
+      .name {
+        font-size: 2.5rem;
+      }
+      
+      .title {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      
+      .education-item h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="name">Krutik Vanjara</div>
+      <div class="title">EMBEDDED SYSTEMS ENGINEER</div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span>📍 Paris, France</span>
+        </div>
+        <div class="contact-item">
+          <a href="mailto:krutikvanjara3880@gmail.com">krutikvanjara3880@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span>+33 7 80 82 63 00</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="summary">
+        <p>Innovative and detail-oriented Embedded Systems Engineer with expertise in Rust, Python, and C. Specialized in IoT product development, secure software engineering, and cloud integrations. Experienced in building scalable solutions using ThingsBoard, MQTT, and embedded IoT security protocols.</p>
+      </div>
+      <a href="https://www.linkedin.com/in/krutik-vanjara" target="_blank" class="cta-button">Connect on LinkedIn</a>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills">
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <div class="skill-list">Rust, Python, C, C++, Embedded C, Arduino Programming</div>
+        </div>
+        <div class="skill-category">
+          <h3>Embedded Systems Tools</h3>
+          <div class="skill-list">RTOS, Firmware Development, Edge Computing, UART, SPI, I2C</div>
+        </div>
+        <div class="skill-category">
+          <h3>Web Technologies</h3>
+          <div class="skill-list">Angular, Node.js, REST APIs</div>
+        </div>
+        <div class="skill-category">
+          <h3>Protocols</h3>
+          <div class="skill-list">MQTT, CoAP, BLE (Bluetooth Low Energy)</div>
+        </div>
+        <div class="skill-category">
+          <h3>Development Tools</h3>
+          <div class="skill-list">Git, Docker, Linux, ThingsBoard, Fritzing, LTspice, Multisim</div>
+        </div>
+        <div class="skill-category">
+          <h3>Soft Skills</h3>
+          <div class="skill-list">Communication, Critical Thinking, Problem-Solving, Teamwork, Adaptability</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <h3>IoT Integration with MicroEJ</h3>
+          <p>Developed a connected IoT device using MicroEJ starter kit with essential APIs.</p>
+          <p>Created a runtime for secure MQTT, CoAP, and REST connections to ThingsBoard.</p>
+          <p>Designed and implemented an admin interface for device monitoring and management on ThingsBoard.</p>
+        </div>
+        <div class="project">
+          <h3>Mapping and Visualization of Magnetic Fields</h3>
+          <p>Designed an IoT system using Arduino and a Hall Effect Sensor for magnetic field data collection.</p>
+          <p>Programmed communication between hardware and computer using Pyserial.</p>
+          <p>Visualized real-time magnetic field data using Python and Matplotlib, showcasing strong data visualization and IoT skills.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="education">
+        <div class="education-item">
+          <h3>Master of Engineering in IT, IoT, and Security</h3>
+          <div class="institution">ESILV, Paris</div>
+          <div class="date">09/2024 – Present</div>
+          <p><strong>Focus Areas:</strong> Secure Embedded Systems, Machine Learning, Cloud Integration, Systems Design.</p>
+          <p><strong>Coursework:</strong> Rust Programming, Embedded IoT Security, Product Development, Scrum Methodology.</p>
+        </div>
+        <div class="education-item">
+          <h3>Master of Science in Physics</h3>
+          <div class="institution">St. Xavier's College, Ahmedabad</div>
+          <div class="date">07/2021 – 05/2023</div>
+          <p><strong>Key Areas:</strong> Nanoscience, Microcontrollers, Numerical Methods, Photovoltaic Systems.</p>
+          <p><strong>Achievement:</strong> Won Second Prize in National Working Model Competition.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="additional">
+      <h2 class="section-title">Personal Interests</h2>
+      <div class="additional">
+        <div class="additional-item">
+          <h3>Sports</h3>
+          <p>Cricket, Volleyball</p>
+        </div>
+        <div class="additional-item">
+          <h3>Technical Interests</h3>
+          <p>Arduino model making, Staying up-to-date with the latest trends in Semiconductor Manufacturing and Electronics, learning About Machine Learning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="summary">
+        <p>I'm always open to discussing new projects, opportunities, or partnerships. Feel free to reach out!</p>
+      </div>
+      <a href="mailto:krutikvanjara3880@gmail.com" class="cta-button">Contact Me</a>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Krutik Vanjara. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
