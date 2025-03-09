@@ -37,10 +37,12 @@
       line-height: 1.6;
       padding: 0;
       margin: 0;
+      font-size: 16px; /* Added base font size */
     }
     
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
+      width: 90%;
       margin: 0 auto;
       padding: 20px;
     }
@@ -134,9 +136,9 @@
     }
     
     section {
-      margin-bottom: 60px;
-      padding-top: 40px; /* Added padding to account for navigation offset */
-      scroll-margin-top: 20px; /* Ensures the section starts at the right place when scrolled to */
+      margin-bottom: 80px; /* Increased from 60px */
+      padding-top: 40px;
+      scroll-margin-top: 20px;
     }
     
     .section-title {
@@ -168,7 +170,7 @@
     
     .skills {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 30px;
     }
     
@@ -305,7 +307,7 @@
     
     .additional {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 30px;
     }
     
@@ -370,6 +372,7 @@
       border-top: 1px solid var(--border);
     }
     
+    /* Media query for smaller screens (already present) */
     @media (max-width: 768px) {
       .name {
         font-size: 2.5rem;
@@ -390,6 +393,53 @@
       
       .education-item h3 {
         font-size: 1.2rem;
+      }
+    }
+    
+    /* New media query for larger screens */
+    @media (min-width: 1200px) {
+      .name {
+        font-size: 4rem;
+      }
+      
+      .title {
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .summary {
+        font-size: 1.3rem;
+      }
+      
+      .skill-category h3 {
+        font-size: 1.4rem;
+      }
+      
+      .skill-list {
+        font-size: 1.1rem;
+      }
+      
+      .project h3 {
+        font-size: 1.6rem;
+      }
+      
+      .project p {
+        font-size: 1.1rem;
+      }
+      
+      .education-item h3 {
+        font-size: 1.6rem;
+      }
+      
+      .education-item .institution {
+        font-size: 1.3rem;
+      }
+      
+      .education-item p {
+        font-size: 1.1rem;
       }
     }
   </style>
